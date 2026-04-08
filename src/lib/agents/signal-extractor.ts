@@ -1,6 +1,6 @@
-import { generateText, Output } from 'ai';
+import { generateText, Output, tool } from 'ai';
 import { z } from 'zod';
-import { deepseek } from '@ai-sdk/deepseek';
+import { google } from '@ai-sdk/google';
 
 const signalExtractorSchema = z.object({
   implicit_emotion: z.string().describe('The hidden or underlying emotion, e.g., "hidden guilt"'),
@@ -11,27 +11,33 @@ const signalExtractorSchema = z.object({
 
 export type ExtractedSignal = z.infer<typeof signalExtractorSchema>;
 
-export async function extractSignals(userMessage: string): Promise<ExtractedSignal> {
-  try {
-    const response  = await generateText({
-      model: deepseek('deepseek-r1'),
-      prompt: `Analyze the following user message to extract implicit emotional signals.
-      Message: "${userMessage}"
-      Look past the surface text. Identify the implied emotion, the urgency (1-10), the hidden need, and whether sarcasm is present.`,
-      output: Output.object({
-        schema: signalExtractorSchema,
-      })
-    });
-    return response.output;
+export const extractSignals = tool({
+  description: "Use this tool to extract implicit emotional signals from the user's message",
+  inputSchema: z.object({
+    userMessage: z.string(),
+  }),
+  execute : async ({userMessage}) =>{
+      try {
+      const response  = await generateText({
+        model: google("gemini-2.5-flash-lite"),
+        prompt: `Analyze the following user message to extract implicit emotional signals.
+        Message: "${userMessage}"
+        Look past the surface text. Identify the implied emotion, the urgency (1-10), the hidden need, and whether sarcasm is present.`,
+        output: Output.object({
+          schema: signalExtractorSchema,
+        })
+      });
+      return response.output;
 
-  } catch (error) {
-    console.error('Error during signal extraction:', error);
-    // Fallback in case of failure
-    return {
-      implicit_emotion: "unknown",
-      urgency_score: 5,
-      hidden_need: "support and connection",
-      is_sarcastic: false,
-    };
+    } catch (error) {
+      console.error('Error during signal extraction:', error);
+      // Fallback in case of failure
+      return {
+        implicit_emotion: "unknown",
+        urgency_score: 5,
+        hidden_need: "support and connection",
+        is_sarcastic: false,
+      };
+    }
   }
-}
+});
