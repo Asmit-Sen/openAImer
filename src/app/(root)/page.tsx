@@ -4,8 +4,8 @@ import Grainient from "../../components/Gradient";
 export default function Home() {
   return (
     <main className="flex h-screen w-full flex-col items-center justify-center overflow-hidden">
-      <nav className="absolute top-0 left-0 z-10 w-full px-6 py-4">
-        <div className="mx-auto flex w-full max-w-6xl items-center justify-between rounded-full bg-white/20 px-5 py-3 backdrop-blur-xl">
+      <nav className="absolute top-0 left-0 z-10 w-full px-6 py-4 ">
+        <div className="mx-auto flex w-full max-w-6xl items-center justify-between rounded-full bg-white/20 px-5 py-3 backdrop-blur-xl border border-white/30">
           <div className="text-lg font-semibold tracking-wide text-white/90">
             OpenAImer
           </div>
