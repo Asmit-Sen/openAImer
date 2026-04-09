@@ -11,11 +11,11 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const openrouter = createOpenRouter({
-  apiKey : process.env.OPENROUTER_API_KEY,
+  apiKey: process.env.OPENROUTER_API_KEY,
 })
 
 const agent = withSupermemory(openrouter('openai/gpt-oss-120b:free'),
-"default_user", {
+  "default_user1", {
   addMemory: "always",
 });
 
@@ -28,11 +28,11 @@ export const Orchestrator = new ToolLoopAgent({
     empathiserTool
   },
   toolChoice: {
-    type : 'tool',
-    toolName : 'extractSignals',
+    type: 'tool',
+    toolName: 'extractSignals',
   },
   onStepFinish: async ({ stepNumber, usage, finishReason, toolCalls }) => {
-      console.log(`Step ${stepNumber} completed:`, {
+    console.log(`Step ${stepNumber} completed:`, {
       inputTokens: usage.inputTokens,
       outputTokens: usage.outputTokens,
       finishReason,
