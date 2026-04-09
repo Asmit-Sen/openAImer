@@ -93,7 +93,7 @@ export default function Chat() {
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder="Type a message..."
-          className=" outline-0 flex-1 rounded-lg p-2 overflow-y mb-5 decoration-0 resize-none"
+          className=" outline-0 flex-1 rounded-lg p-2 overflow-y mb-5 decoration-0 resize-none textarea-scroll"
         />
         <button
           type="submit"

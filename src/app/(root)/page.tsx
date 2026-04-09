@@ -7,7 +7,7 @@ export default function Home() {
       <nav className="absolute top-0 left-0 z-10 w-full px-6 py-4 ">
         <div className="mx-auto flex w-full max-w-6xl items-center justify-between rounded-full bg-white/20 px-5 py-3 backdrop-blur-xl border border-white/30">
           <div className="text-lg font-semibold tracking-wide text-white/90">
-            OpenAImer
+            Chat App
           </div>
           <div className="flex items-center gap-4 text-xs font-medium text-white/80"></div>
         </div>
