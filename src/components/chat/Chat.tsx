@@ -49,7 +49,7 @@ export default function Chat() {
 
   return (
     <div className="relative">
-      <div className="overflow-y-scroll h-screen pt-20 chat-scroll mask-[linear-gradient(to_bottom,black_0%,black_70%,transparent_100%)]">
+      <div className="overflow-y-scroll h-screen pt-30 chat-scroll mask-[linear-gradient(to_bottom,black_0%,black_70%,transparent_100%)]">
         {messages.map((message) => (
           <div
             key={message.id}

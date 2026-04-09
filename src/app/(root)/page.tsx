@@ -4,6 +4,14 @@ import Grainient from "../../components/Gradient";
 export default function Home() {
   return (
     <main className="flex h-screen w-full flex-col items-center justify-center overflow-hidden">
+      <nav className="absolute top-0 left-0 z-10 w-full px-6 py-4">
+        <div className="mx-auto flex w-full max-w-6xl items-center justify-between rounded-full bg-white/20 px-5 py-3 backdrop-blur-xl">
+          <div className="text-lg font-semibold tracking-wide text-white/90">
+            OpenAImer
+          </div>
+          <div className="flex items-center gap-4 text-xs font-medium text-white/80"></div>
+        </div>
+      </nav>
       <div className=" absolute w-full h-full opacity-70">
         <Grainient
           color1="#FF9FFC"
