@@ -9,7 +9,9 @@ export default function Home() {
           <div className="text-lg font-semibold tracking-wide text-white/90">
             Chat App
           </div>
-          <div className="flex items-center gap-4 text-xs font-medium text-white/80"></div>
+          <div className="flex items-center gap-4 text-lg font-medium text-white/80">
+            @Skill Issue
+          </div>
         </div>
       </nav>
       <div className=" absolute w-full h-full opacity-70">
